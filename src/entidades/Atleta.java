@@ -3,11 +3,12 @@ package entidades;
 import java.util.ArrayList;
 
 import enums.CartoesEnum;
-import enums.PosicaoJogadorEnum;
+import enums.PosicaoAtletaEnum;
+ 
 
 public class Atleta extends Funcionario{
 	
-	private PosicaoJogadorEnum posicao;
+	private PosicaoAtletaEnum posicao;
 	private boolean isTitular;
 	private ArrayList<CartoesEnum> cartoes=new ArrayList<>();
 	
@@ -15,11 +16,20 @@ public class Atleta extends Funcionario{
 		super(nome, cpf);
 		// TODO Auto-generated constructor stub
 	}
+	public Atleta(int codigo) {
+		super(null, null);
+		this.setCodigo(codigo);
+	}
+	public Atleta() {
+		super(null, null);
+		 
+	}
 	
-	public PosicaoJogadorEnum getPosicao() {
+	
+	public PosicaoAtletaEnum getPosicao() {
 		return posicao;
 	}
-	public void setPosicao(PosicaoJogadorEnum posicao) {
+	public void setPosicao(PosicaoAtletaEnum posicao) {
 		this.posicao = posicao;
 	}
 	public boolean isTitular() {

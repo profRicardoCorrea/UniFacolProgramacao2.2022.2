@@ -10,12 +10,17 @@ public class Funcionario extends Pessoa{
 	private Date dataDemissao;
 	private Date dataRenovacao;
 	private TipoFuncionario tipoFuncionario;
+	private boolean situacao;
 	private float salario;
+	
 	public int getMatricula() {
 		return matricula;
 	}
 	public Funcionario(String nome, String cpf) {
 		super(nome,cpf);
+	}
+	public Funcionario() {
+		super(null,null);
 	}
 	
 	public void setMatricula(int matricula) {
@@ -50,6 +55,12 @@ public class Funcionario extends Pessoa{
 	}
 	public void setSalario(float salario) {
 		this.salario = salario;
+	}
+	public boolean isSituacao() {
+		return situacao;
+	}
+	public void setSituacao(boolean situacao) {
+		this.situacao = situacao;
 	}
 	
  

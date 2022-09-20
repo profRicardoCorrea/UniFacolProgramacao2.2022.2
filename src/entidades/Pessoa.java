@@ -2,6 +2,7 @@ package entidades;
 
 import java.util.Date;
 
+import enums.GeneroEnum;
 import enums.SexoEnum;
 
 public abstract class Pessoa extends EntidadeBasica {
@@ -9,6 +10,7 @@ public abstract class Pessoa extends EntidadeBasica {
 	private String cpf;
 	private Date dataNascimento;
 	private SexoEnum sexo;
+	private GeneroEnum genero;
 	
 	public Pessoa(String nome, String cpf) {
 		
@@ -39,6 +41,17 @@ public abstract class Pessoa extends EntidadeBasica {
 	public void setSexo(SexoEnum sexo) {
 		this.sexo = sexo;
 	}
+
+
+	public GeneroEnum getGenero() {
+		return genero;
+	}
+
+
+	public void setGenero(GeneroEnum genero) {
+		this.genero = genero;
+	}
+	
 	
 	
 	 

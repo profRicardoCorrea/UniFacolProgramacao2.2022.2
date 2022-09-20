@@ -1,10 +1,10 @@
 package enums;
 
-public enum TipoFuncionario {
-Contratado("Contratado"), Clt("Clt"), Diarista("Diarista"), Mensalista("Mensalista");
+public enum GeneroEnum {
+	Transgenero("Transgênero"),Cisgenero("Cisgênero"), NaoBinário("Não-binário");
 	private String descricao;
 
-	TipoFuncionario(String descricao) {
+	GeneroEnum(String descricao) {
 		this.descricao = descricao;
 	}
 
@@ -17,10 +17,10 @@ Contratado("Contratado"), Clt("Clt"), Diarista("Diarista"), Mensalista("Mensalis
 		return this.getDescricao();
 	}
 
-	public static TipoFuncionario getEnum(String value) {
+	public static GeneroEnum getEnum(String value) {
 		if (value == null)
 			throw new IllegalArgumentException();
-		for (TipoFuncionario v : values())
+		for (GeneroEnum v : values())
 			if (value.equalsIgnoreCase(v.getDescricao()))
 				return v;
 		throw new IllegalArgumentException();

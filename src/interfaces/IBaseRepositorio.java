@@ -3,7 +3,7 @@ package interfaces;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import Dominio.Eleitor;
+ 
 
 public interface IBaseRepositorio<Entidade> {
 
