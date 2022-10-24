@@ -109,10 +109,14 @@
           </div>
           <div class="card-body">
             
-            <form>
-            <button type="submit" formaction=<%= request.getContextPath() %>/CadastrarTime class="w-100 btn btn-lg btn-outline-secondary" style="margin:0px 5px 5px 0px;">CADASTRAR</button>
-            </form><form>
-            <button type="submit" formaction="https://www.w3docs.com" class="w-100 btn btn-lg btn-outline-secondary" style="margin:0px 5px 5px 0px;">LISTAR</button>
+            <form action=<%= request.getContextPath() %>/CadastrarTime   method="get">
+             <input type="hidden" name="op" value="cadastrar"/>
+            <button type="submit"  class="w-100 btn btn-lg btn-outline-secondary" style="margin:0px 5px 5px 0px;">CADASTRAR</button>
+            </form>
+            
+            <form action=<%= request.getContextPath() %>/CadastrarTime   method="get">
+            <input type="hidden" name="op" value="listar"/>
+            <button type="submit"  class="w-100 btn btn-lg btn-outline-secondary" style="margin:0px 5px 5px 0px;">LISTAR</button>
             </form><form>
             <button type="submit" formaction="https://www.w3docs.com" class="w-100 btn btn-lg btn-outline-secondary" style="margin:0px 5px 5px 0px;">PESQUISAR</button>
             </form>

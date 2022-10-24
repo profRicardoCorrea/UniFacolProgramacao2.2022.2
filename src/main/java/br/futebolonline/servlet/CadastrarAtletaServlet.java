@@ -51,7 +51,21 @@ public class CadastrarAtletaServlet extends HttpServlet {
 			for (JogadorStatusEnum posicao : JogadorStatusEnum.values()) {				 
 				jogadorStatus.add(posicao.getDescricao());
 			}
-			
+			ArrayList<String> tipoFuncionario = new ArrayList<String>();
+			for (TipoFuncionarioEnum posicao : TipoFuncionarioEnum.values()) {
+				tipoFuncionario.add(posicao.getDescricao());
+			}
+			ArrayList<String> sexos = new ArrayList<String>();
+			for (SexoEnum sexo : SexoEnum.values()) {
+				sexos.add(sexo.getDescricao());
+			}
+			ArrayList<String> generos = new ArrayList<String>();
+			for (GeneroEnum genero : GeneroEnum.values()) {
+				generos.add(genero.getDescricao());
+			}
+			request.setAttribute("listTipoFuncionario", tipoFuncionario);
+			request.setAttribute("listSexo", sexos);
+			request.setAttribute("listGenero", generos);
 			 
 			request.setAttribute("listPosicaoJogador", posicaoJogador);
 			request.setAttribute("listJogadorStatus", jogadorStatus);
@@ -79,19 +93,27 @@ public class CadastrarAtletaServlet extends HttpServlet {
 		SexoEnum sexoEnum = SexoEnum.getEnum(request.getParameter("sexo"));
 		GeneroEnum generoEnum = GeneroEnum.getEnum(request.getParameter("genero"));
 		int matricula=Integer.parseInt(request.getParameter("matricula"));
+		
 		Date dtContratacao = DatetimeExtensions.toDate(request.getParameter("dt_contratacao"));
-		Date dtDemissao = DatetimeExtensions.toDate(request.getParameter("dt_demissao"));
-		Date dtRenovacao = DatetimeExtensions.toDate(request.getParameter("dt_renovacao"));
+		
+		//Date dtDemissao = DatetimeExtensions.toDate(request.getParameter("dt_demissao"));
+		//Date dtRenovacao = DatetimeExtensions.toDate(request.getParameter("dt_renovacao"));
 		TipoFuncionarioEnum tipoFuncionario = TipoFuncionarioEnum.getEnum(request.getParameter("tipo_funcionario"));
+		
 		PosicaoJogadorEnum posicaoJogadorEnum = PosicaoJogadorEnum.getEnum(request.getParameter("posicao_jogador"));
+		long timeId=0;
 		JogadorStatusEnum jogadorStatusEnum = JogadorStatusEnum.getEnum(request.getParameter("status_jogador"));
-		long timeId = Long.parseLong(request.getParameter("time"));
+		float salario = Float.parseFloat(request.getParameter("salario"));
+		System.out.println("atleta ...."+tipoFuncionario.toString());
+		System.out.println("atleta ...."+request.getParameter("timeId"));
+		if(request.getParameter("timeId").length()>0)
+			timeId = Long.parseLong(request.getParameter("timeId"));
 		
 		AtletaServico atletaServico=new AtletaServico();
-		atletaServico.cadastrar(nome, cpf, dtNascimento, sexoEnum, generoEnum, matricula, dtContratacao, dtDemissao, dtRenovacao, tipoFuncionario, posicaoJogadorEnum, jogadorStatusEnum, timeId);
+		atletaServico.cadastrar(nome, cpf, dtNascimento, sexoEnum, generoEnum, matricula, dtContratacao, null, null, tipoFuncionario, posicaoJogadorEnum, jogadorStatusEnum, timeId);
 		
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println("Error:"+e.getMessage());
 		}
 		
 		 

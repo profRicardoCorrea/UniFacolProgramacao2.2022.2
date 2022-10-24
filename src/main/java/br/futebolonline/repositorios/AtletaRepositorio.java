@@ -105,7 +105,7 @@ public class AtletaRepositorio implements IBasicoRepositorio<Atleta> {
 		 
 		criteria.where(
 				 builder.and(
-		    builder.equal(root.get("posicao"), posicao.toString()),
+		    builder.equal(root.get("posicao"), posicao),
 		    builder.equal(root.type(), sublcass))
 		);
 		 try {
@@ -118,6 +118,7 @@ public class AtletaRepositorio implements IBasicoRepositorio<Atleta> {
 		System.out.println(">>>>"+atletas.size());
 		 return  (ArrayList<Atleta>)atletas;
 		 } catch (Exception e) {
+			 System.out.println(">>>>"+e.toString());
 				return new ArrayList<Atleta>();
 			}
 	 

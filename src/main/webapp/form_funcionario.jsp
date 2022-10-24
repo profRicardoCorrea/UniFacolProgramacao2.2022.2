@@ -85,6 +85,7 @@
         <div class="row g-5">
           <div class="col-md-7 col-lg-8">
             <form action="<%= request.getContextPath() %>/CadastrarFuncionario" method="post" class="needs-validation" novalidate>
+              
               <div class="row g-3">
                 <div class="col-sm-12">
                   <label for="nome" class="form-label">Nome Completo</label>
@@ -232,7 +233,7 @@
                     value=""
                     required
                   />
-                  <div class="invalid-feedback">Digite um cpf válido.</div>
+                  <div class="invalid-feedback">Digite um salario válido.</div>
                 </div>
 
 

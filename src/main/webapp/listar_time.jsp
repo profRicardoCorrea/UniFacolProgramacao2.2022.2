@@ -78,7 +78,7 @@
       <div class="row g-5">
         
           <div class="col-sm-12  ">
-          <h2>Formulário de Cadastro de Time</h2>
+          <h2>Times Cadastrados</h2>
         </div>
         </div>
 
@@ -86,90 +86,37 @@
           <div class="col-md-7 col-lg-8">
             <form action="<%= request.getContextPath() %>/CadastrarTime" method="post" class="needs-validation" novalidate>
               <input type="hidden" name="op" value="cadastrar"/>
-              <div class="row g-3">
-                <div class="col-sm-9">
-                  <label for="nome" class="form-label">Nome do Time</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="nome"
-                    name="nome"
-                    placeholder=""
-                    value=""
-                    required
-
-                  />
-                  <div class="invalid-feedback">
-                    Nome do Time é obrigatório.
-                  </div>
-                </div>
-                <div class="col-sm-3">
-                  <label for="dt_criacao" class="form-label">Dt. de Criacao do Time</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="dt_criacao"
-                    name="dt_criacao"
-                    placeholder=""
-                    value=""
-                    required
-                  />
-                  <div class="invalid-feedback">Digite uma data válido.</div>
-                </div>
-
-                <div class="col-md-6">
-                  <label for="tecnico" class="form-label">Tecnico</label>
-                  <select class="form-select" id="tecnico"  name="tecnico"required>
-                    <option value="">Selecione...</option>
-                     <c:forEach items="${listTecnicos}" var="tec">
-                      <option value="${tec.getCodigo()}">${tec.getNome()}</option>
-                    </c:forEach>
-                  </select>
-                  <div class="invalid-feedback">
-                   Selecione uma opção válida.
-                  </div>
-                </div>
-
-                 <div class="col-md-6">
-                  <label for="status_time" class="form-label">Status do Time</label>
-                  <select class="form-select" id="status_time" name="status_time" required>
-                    <option value="">Selecione...</option>
-                    <c:forEach items="${listTimeStatus}" var="status">
-                      <option value="${status}">${status}</option>
-                    </c:forEach>
-                  </select>
-                  <div class="invalid-feedback">
-                   Selecione uma opção válida.
-                  </div>
-                </div>
-      <h2>Elenco do Time</h2>
+              
+      
       <div class="table-responsive">
         <table class="table table-striped table-sm">
           <thead>
             <tr>
               <th scope="col">Código</th>
               <th scope="col">Nome</th>
-              <th scope="col">Posicao</th>
-              <th scope="col">Status</th>             
+              <th scope="col">Dt. Fundação</th>
+              <th scope="col">Técnico</th>  
+              <th scope="col">ALTERAR</th>             
             </tr>
           </thead>
           <tbody>
+          <c:forEach items="${listTimes}" var="time">
             <tr>
-              <c:forEach items="${listAtletas}" var="atleta">
-                <td>${atleta.getCodigo()}</td>
-                <td>${atleta.getNome()}</td>                
-                <td>${atleta.getPosicao().toString()}</td>
-                <td>${atleta.getStatus().toString()}</td>                
-              </c:forEach>             
-            </tr>             
+              
+                <td>${time.getCodigo()}</td>
+                <td>${time.getNome()}</td>                
+                <td>${time.getDataCriacao()}</td>
+                <td>${time.getTecnico().getNome()}</td>   
+                <td><a href="<%= request.getContextPath() %>/CadastrarTime?op=atualizar&idTime=${time.getCodigo()}">Editar</a></td>                
+                       
+            </tr>    
+            </c:forEach>             
           </tbody>
         </table>
       </div>
           
               <hr class="my-4" />
-              <button class="w-100 btn btn-primary btn-lg" type="submit">
-                Salvar Dados do Time
-              </button>
+               
             </form>
           </div>
         </div>

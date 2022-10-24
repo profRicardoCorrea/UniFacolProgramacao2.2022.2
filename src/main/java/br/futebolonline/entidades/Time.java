@@ -25,16 +25,19 @@ import br.futebolonline.enums.TimeStatusEnum;
 public class Time extends EntidadeBasica implements Serializable {	 
 	private static final long serialVersionUID = -7134297171378830526L;
 	
-	@Column(length = 50, nullable = false)
+	@Column(length = 50, nullable = false,  unique=true)
 	private String nome;
+	@Column( nullable = false, unique=true)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataCriacao;
 	@OneToOne(cascade=CascadeType.ALL)
 	private Atleta tecnico;
 	@OneToMany(mappedBy = "time", cascade = CascadeType.ALL)
 	private List<Atleta> jogadores ;
+	@Column( nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TimeStatusEnum status;
+	
 	public Time(String nome) {
 		this.nome=nome;
 	}
@@ -49,6 +52,15 @@ public class Time extends EntidadeBasica implements Serializable {
 	
 	
 	
+	public Time(String nome, Date dataCriacao, Atleta tecnico, List<Atleta> jogadores, TimeStatusEnum status) {
+		super();
+		this.nome = nome;
+		this.dataCriacao = dataCriacao;
+		this.tecnico = tecnico;
+		this.jogadores = jogadores;
+		this.status = status;
+	}
+
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}

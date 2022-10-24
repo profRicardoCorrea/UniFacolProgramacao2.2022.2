@@ -89,13 +89,13 @@
               <div class="row g-3">
                 <div class="col-sm-9">
                   <label for="nome" class="form-label">Nome do Time</label>
-                  <input
+                  <c:inputText
                     type="text"
                     class="form-control"
                     id="nome"
                     name="nome"
                     placeholder=""
-                    value=""
+                    value="#{editarTime.getNome()}"
                     required
 
                   />

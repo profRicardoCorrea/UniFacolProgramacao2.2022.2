@@ -84,18 +84,18 @@
 
         <div class="row g-5">
           <div class="col-md-7 col-lg-8">
-            <form action="<%= request.getContextPath() %>/AtletaAddServlet" method="get" class="needs-validation" novalidate>
+            <form action="<%= request.getContextPath() %>/CadastrarAtleta" method="post" class="needs-validation" novalidate>
               <div class="row g-3">
-                <div class="col-sm-12">
+                 <div class="col-sm-12">
                   <label for="nome" class="form-label">Nome Completo</label>
                   <input
                     type="text"
                     class="form-control"
                     id="nome"
+                    name="nome"
                     placeholder=""
                     value=""
-                    disabled
-
+                    required
                   />
                   <div class="invalid-feedback">
                     Nome completo é obrigatório.
@@ -108,9 +108,10 @@
                     type="text"
                     class="form-control"
                     id="cpf"
+                    name="cpf"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
                   <div class="invalid-feedback">Digite um cpf válido.</div>
                 </div>
@@ -120,31 +121,34 @@
                     type="date"
                     class="form-control"
                     id="dt_nascimento"
+                    name="dt_nascimento"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
                   <div class="invalid-feedback">Digite uma data válido.</div>
                 </div>
 
                 <div class="col-md-4">
                   <label for="sexo" class="form-label">Sexo</label>
-                  <select class="form-select" id="sexo" disabled>
-
-                   
+                  <select class="form-select" id="sexo" name="sexo" required>
                     <option value="">Selecione...</option>
-                    <option>United States</option>
+                    <c:forEach items="${listSexo}" var="sexo">
+                      <option value="${sexo}">${sexo}</option>
+                    </c:forEach>
                   </select>
                   <div class="invalid-feedback">
                    Selecione uma opção válida.
                   </div>
                 </div>
 
-                 <div class="col-md-4">
+                <div class="col-md-4">
                   <label for="genero" class="form-label">Genero</label>
-                  <select class="form-select" id="genero" disabled>
+                  <select class="form-select" id="genero" name="genero" required>
                     <option value="">Selecione...</option>
-                    <option>United States</option>
+                    <c:forEach items="${listGenero}" var="genero">
+                      <option value="${genero}">${genero}</option>
+                    </c:forEach>
                   </select>
                   <div class="invalid-feedback">
                    Selecione uma opção válida.
@@ -159,11 +163,12 @@
                     type="text"
                     class="form-control"
                     id="matricula"
+                    name="matricula"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
-                  <div class="invalid-feedback">Digite uma matrícula válida.</div>
+                  <div class="invalid-feedback">Digite uma mmatrícula válida.</div>
                 </div>
 
               <div class="col-sm-3">
@@ -172,14 +177,15 @@
                     type="date"
                     class="form-control"
                     id="dt_contratacao"
+                    name="dt_contratacao"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
                   <div class="invalid-feedback">Digite uma data válida.</div>
                 </div>
 
-                <div class="col-sm-3">
+                <!-- <div class="col-sm-3">
                   <label for="dt_demissao" class="form-label">Data de Demissao</label>
                   <input
                     type="date"
@@ -187,7 +193,7 @@
                     id="dt_demissao"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
                   <div class="invalid-feedback">Digite uma data válida.</div>
                 </div>
@@ -199,15 +205,17 @@
                     id="dt_renovacao"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
                   <div class="invalid-feedback">Digite uma data válida.</div>
-                </div>
+                </div> -->
                 <div class="col-md-4">
                   <label for="tipo_funcionario" class="form-label">Tipo Funcionário</label>
-                  <select class="form-select" id="tipo_funcionario" disabled>
+                  <select class="form-select" id="tipo_funcionario" name="tipo_funcionario" required>
                     <option value="">Selecione...</option>
-                    <option>United States</option>
+                    <c:forEach items="${listTipoFuncionario}" var="tipo">
+                      <option value="${tipo}">${tipo}</option>
+                    </c:forEach>
                   </select>
                   <div class="invalid-feedback">
                    Selecione uma opção válida.
@@ -219,16 +227,17 @@
                     type="number"
                     class="form-control"
                     id="salario"
+                     name="salario"
                     placeholder=""
                     value=""
-                    disabled
+                    required
                   />
-                  <div class="invalid-feedback">Digite um cpf válido.</div>
+                  <div class="invalid-feedback">Digite um salario válido.</div>
                 </div>
               <hr class="my-4" />
                 <div class="col-md-4">
                   <label for="posicao_jogador" class="form-label">Posição do Jogador</label>
-                  <select class="form-select" id="posicao_jogador" required>
+                  <select class="form-select" id="posicao_jogador" name="posicao_jogador" required>
                     <option value="">Selecione...</option>
                     <c:forEach items="${listPosicaoJogador}" var="tipo">
                       <option value="${tipo}">${tipo}</option>
@@ -242,10 +251,10 @@
 
                 <div class="col-md-4">
                   <label for="time" class="form-label">Time</label>
-                  <select class="form-select" id="time" required>
+                  <select class="form-select" id="timeId"  name="timeId"required>
                     <option value="">Selecione...</option>
                     <c:forEach items="${listTimes}" var="time">
-                      <option value="${time.getCodigo()}">${time.getNone()}</option>
+                      <option value="${time.getCodigo()}">${time.getNome()}</option>
                     </c:forEach>
                   </select>
                   <div class="invalid-feedback">
@@ -255,7 +264,7 @@
 
                 <div class="col-md-4">
                   <label for="status_jogador" class="form-label">Status Jogador</label>
-                  <select class="form-select" id="status_jogador" required>
+                  <select class="form-select" id="status_jogador" name="status_jogador"  required>
                     <option value="">Selecione...</option>
                     <c:forEach items="${listJogadorStatus}" var="status">
                       <option value="${status}">${status}</option>

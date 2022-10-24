@@ -3,6 +3,7 @@ package br.futebolonline.entidades;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,15 +17,19 @@ import br.futebolonline.enums.TipoFuncionarioEnum;
 public class Funcionario extends Pessoa implements Serializable{	 
 	private static final long serialVersionUID = 7705291799444067178L;
 	
+	@Column( nullable = false, unique=true)
 	private int matricula;
+	@Column( nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataContratacao;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataDemissao;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataRenovacao;
+	@Column( nullable = false)
 	@Enumerated(EnumType.STRING)
 	private TipoFuncionarioEnum tipoFuncionario;
+	@Column( nullable = false)
 	private float salario;
 	
 	public Funcionario(String nome, String cpf) {

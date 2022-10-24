@@ -21,7 +21,7 @@ public abstract class Pessoa extends EntidadeBasica  implements Serializable{
 	private static final long serialVersionUID = -8572298885247477868L;
 	@Column(length = 150, nullable = false)
 	private String nome;
-	@Column(length = 11, nullable = false)
+	@Column(length = 11, nullable = false, unique=true)
 	private String cpf;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date dataNascimento;

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -20,10 +21,12 @@ import br.futebolonline.enums.PosicaoJogadorEnum;
 public class Atleta extends Funcionario implements Serializable{ 
 	private static final long serialVersionUID = 6301388277361744321L;
 	
+	
 	@Enumerated(EnumType.STRING)
 	private PosicaoJogadorEnum posicao;
 	@ManyToOne
 	private Time time;
+	@Column( nullable = false)
 	@Enumerated(EnumType.STRING)
 	private JogadorStatusEnum status;
 	@ManyToMany(mappedBy="atletas", cascade = CascadeType.ALL)
@@ -34,6 +37,10 @@ public class Atleta extends Funcionario implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
+	public Atleta() {
+		super(null, null);
+		// TODO Auto-generated constructor stub
+	}
 	
 	
 	public Time getTime() {
